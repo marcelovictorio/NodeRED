@@ -1,0 +1,235 @@
+[
+    {
+        "id": "ae1b942e44180457",
+        "type": "tab",
+        "label": "Fluxo Relay",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "aa61db0cb5c289d2",
+        "type": "group",
+        "z": "ae1b942e44180457",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "05178dbabd18804a",
+            "8cc923034c3ceac4",
+            "a3a11e7c59ad08d2",
+            "a9af54b71c4a0798",
+            "68092dc4655e44f0",
+            "3a3ff0d0879bbe8a"
+        ],
+        "x": 54,
+        "y": 39,
+        "w": 472,
+        "h": 202
+    },
+    {
+        "id": "05178dbabd18804a",
+        "type": "inject",
+        "z": "ae1b942e44180457",
+        "g": "aa61db0cb5c289d2",
+        "name": "inject-ON",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "HIGH",
+        "payloadType": "str",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "a3a11e7c59ad08d2",
+                "a9af54b71c4a0798"
+            ]
+        ]
+    },
+    {
+        "id": "8cc923034c3ceac4",
+        "type": "inject",
+        "z": "ae1b942e44180457",
+        "g": "aa61db0cb5c289d2",
+        "name": "inject-OFF",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "LOW",
+        "payloadType": "str",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "a3a11e7c59ad08d2",
+                "a9af54b71c4a0798"
+            ]
+        ]
+    },
+    {
+        "id": "a3a11e7c59ad08d2",
+        "type": "debug",
+        "z": "ae1b942e44180457",
+        "g": "aa61db0cb5c289d2",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a9af54b71c4a0798",
+        "type": "mqtt out",
+        "z": "ae1b942e44180457",
+        "g": "aa61db0cb5c289d2",
+        "name": "",
+        "topic": "/topico/relay",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "638f54d803702f70",
+        "x": 430,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "68092dc4655e44f0",
+        "type": "ui_button",
+        "z": "ae1b942e44180457",
+        "g": "aa61db0cb5c289d2",
+        "name": "",
+        "group": "cd268eb951ca74f7",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "HIGH",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "a9af54b71c4a0798"
+            ]
+        ]
+    },
+    {
+        "id": "3a3ff0d0879bbe8a",
+        "type": "ui_button",
+        "z": "ae1b942e44180457",
+        "g": "aa61db0cb5c289d2",
+        "name": "",
+        "group": "cd268eb951ca74f7",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "LOW",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "a9af54b71c4a0798"
+            ]
+        ]
+    },
+    {
+        "id": "638f54d803702f70",
+        "type": "mqtt-broker",
+        "name": "Uduntu-22-MQTT-Broker",
+        "broker": "192.168.15.8",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "cd268eb951ca74f7",
+        "type": "ui_group",
+        "name": "Relay",
+        "tab": "ee856d6d656e93ab",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ee856d6d656e93ab",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
